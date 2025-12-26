@@ -2,6 +2,7 @@ import React from "react";
 import menus from "../assets/menus.png";
 import devIcon from "../assets/code.png";
 import closeMenu from "../assets/close2.png";
+import MobileNav from "./MobileNav.jsx";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
@@ -103,7 +104,17 @@ const Navbar = ({ isMobileNav, setMobileNav }) => {
             </div>
           </div>
         </div>
-        <div className="w-full h-1 bg-violet-600"></div>
+         {isMobileNav ? (
+          <div className="w-full background-primary">
+            <MobileNav setMobileNav={setMobileNav} />
+            <div className="w-full h-1 bg-violet-600"></div>
+          </div>
+        ):(
+          <>
+          <div className="w-full h-1 bg-violet-600"></div>
+          </>
+        )}
+        
       </div>
     </>
   );
