@@ -3,10 +3,7 @@ import profilePic from "../assets/profile-pic1.png";
 
 const AboutMe = () => {
   return (
-    <div
-      id="about"
-      className="w-full px-8 lg:px-48 mb-28 md:mb-32 lg:mb-48 mt-1"
-    >
+    <div id="about" className="w-full mt-1">
       <h1 className="title-section">About me</h1>
 
       <div className="md:flex md:items-start md:justify-start md:space-x-4 space-y-4 md:space-y-0 mt-12">
@@ -41,7 +38,6 @@ const AboutMe = () => {
             </h1>
           </div>
 
-
           <div className="flex flex-wrap items-center justify-start gap-2 mt-2">
             <div className="px-2 py-2 bg-gray-800 w-fit rounded-md">
               <h1 className="text-violet-600 text-sm md:text-md lg:text-md font-poppins">
@@ -69,7 +65,6 @@ const AboutMe = () => {
               </h1>
             </div>
           </div>
-
         </div>
       </div>
     </div>

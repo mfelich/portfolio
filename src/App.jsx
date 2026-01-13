@@ -5,6 +5,7 @@ import AboutMe from "./components/AboutMe.jsx";
 import Projects from "./components/Projects.jsx";
 import Footer from "./components/Footer.jsx";
 import Experience from "./components/Experience.jsx";
+import Container from "./components/layout/Container.jsx";
 import { useState } from "react";
 
 function App() {
@@ -23,9 +24,11 @@ function App() {
         )}
 
         <Hero />
-        <AboutMe />
-        <Experience />
-        <Projects />
+        <Container>
+          <AboutMe />
+          <Experience />
+          <Projects />
+        </Container>
         <Footer />
       </div>
     </>

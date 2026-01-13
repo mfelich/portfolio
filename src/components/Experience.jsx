@@ -30,7 +30,7 @@ const Experience = () => {
   return (
     <div
       id="experience"
-      className="w-full px-8 lg:px-48 2xl:px-1/2 mb-28 md:mb-32 lg:mb-48"
+      className="w-full"
     >
       <h1 className="title-section">Experience</h1>
 
