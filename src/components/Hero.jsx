@@ -62,7 +62,7 @@ const Hero = () => {
             Mirza Felić
           </h1>
           <h1 className="text-gray-200 text-sm font-poppins text-center md:text-lg lg:text-lg">
-             Spring Boot Developer
+             Backend Engineer  (Java/Spring)
           </h1>
 
           <div className="w-full flex items-center justify-center">

@@ -10,7 +10,7 @@ const Projects = () => {
     {
       title: "Biddora",
       description:
-        "Backend system for a real-time auction platform where users can place live bids on products with instant updates via WebSocket connections. Implements JWT-based authentication with Spring Security for secured API endpoints and WebSocket sessions.",
+        "Backend system for a real-time auction platform enabling live bidding with instant updates via WebSockets. Designed and implemented secure REST APIs using Spring Security (JWT) with role-based access control, including secured WebSocket sessions and user-scoped resources.",
       technologies: [
         "Java 17",
         "Spring Boot",
@@ -23,17 +23,17 @@ const Projects = () => {
       ],
       images: [biddora1, biddora2, biddora3],
       details:
-        "Features include automated auction winner determination with bid validation, Redis caching for product listings to reduce database load, and additional modules for user favorites and rating systems. The application is containerized with Docker and includes comprehensive API documentation through SpringDoc OpenAPI.",
+        "Handles bid validation and automated auction winner determination, with performance optimized through Redis caching to reduce database load on frequently accessed product data. The application is fully containerized with Docker and documented using SpringDoc OpenAPI.",
       githubUrl: "https://github.com/mfelich/biddora-backend",
     },
     {
       title: "SummonerAI Coach",
       description:
-        "AI-powered coaching platform for League of Legends players, providing personalized strategies and performance analysis.",
+        "Backend-driven analytics platform integrating third-party APIs and AI services to generate contextual performance insights.",
       technologies: ["Spring Boot", "Riot API", "OpenAI API", "React"],
       images: [summoneraiCoach],
       details:
-        "Features include real-time player data fetching from Riot API, statistical processing of match history, AI-driven analysis generation with contextual recommendations, and automated reporting system. The backend serves a React frontend with processed data and AI insights.",
+        "Implemented backend services to fetch and process external data from Riot API, transform match statistics, and generate AI-driven analysis using OpenAI APIs. Designed the system to handle external API limitations, data processing, and structured response delivery to a React frontend.",
       githubUrl: "https://github.com/mfelich/summonerai-coach",
     },
   ];

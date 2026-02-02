@@ -15,26 +15,24 @@ const AboutMe = () => {
         <div>
           <div className="py-0 px-0 mb-6 md:mb-6 lg:mb- space-y-6">
             <h1 className="font-poppins text-gray-200 text-left text-md md:text-lg lg:text-lg">
-              Backend Developer specializing in Spring Boot and secure API
-              design, building backend systems that reflect real-world product
-              constraints and access rules.
+              Backend Engineer focused on building secure and scalable backend
+              systems using Spring Boot. I specialize in designing REST APIs
+              with clear access rules, role-based authorization, validation
+              layers, and centralized exception handling.
             </h1>
 
             <h1 className="font-poppins text-gray-200 text-left text-md md:text-lg lg:text-lg">
-              I design and implement backend components including role-based
-              authorization, user-scoped resource access, validation layers, and
-              centralized error handling. My work also includes real-time
-              communication using WebSockets, integration of third-party and
-              AI-driven APIs, and performance optimization through Redis-based
-              caching strategies.
+              I have hands-on experience implementing real-time communication
+              with WebSockets, integrating third-party and AI-driven APIs, and
+              improving performance through Redis-based caching strategies. My
+              projects reflect real product requirements such as user-scoped
+              data access, security constraints, and maintainable architectures.
             </h1>
 
             <h1 className="font-poppins text-gray-200 text-left text-md md:text-lg lg:text-lg">
-              Alongside my professional development, I am currently in my final
-              year of Computer Science (Software Engineering) at a technical
-              faculty, strengthening my engineering foundation while working on
-              backend systems designed around real usage and evolving
-              requirements.
+              I am currently in my final year of Computer Science (Software
+              Engineering), combining a strong engineering foundation with
+              practical backend development on production-oriented projects.
             </h1>
           </div>
 
@@ -51,17 +49,17 @@ const AboutMe = () => {
             </div>
             <div className="px-2 py-2 bg-gray-800 w-fit rounded-md">
               <h1 className="text-violet-600 text-sm md:text-md lg:text-md font-poppins">
-                Postgres
+                Spring Security
               </h1>
             </div>
             <div className="px-2 py-2 bg-gray-800 w-fit rounded-md">
               <h1 className="text-violet-600 text-sm md:text-md lg:text-md font-poppins">
-                JavaScript
+                PostgreSQL
               </h1>
             </div>
             <div className="px-2 py-2 bg-gray-800 w-fit rounded-md">
               <h1 className="text-violet-600 text-sm md:text-md lg:text-md font-poppins">
-                React
+                Redis
               </h1>
             </div>
           </div>

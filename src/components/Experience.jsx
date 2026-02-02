@@ -2,36 +2,31 @@ import React from "react";
 
 const Experience = () => {
   const experiences = [
-    {
-      date: "September, 2021 - Present",
-      title: "Computer Science at the University of Bihać, Technical Faculty",
-      description: [
-        "Developed backend components for an IoT-based smart animal feeder as part of a team-based academic project, applying professional software engineering practices.",
-        "Engineered the core system using Spring Boot, creating RESTful endpoints for device control and automated feeding workflow management.",
-        "Improved system performance by ~35% by strategically implementing Redis caching to reduce redundant database calls and processing.",
-        "Increased application stability by establishing a testing suite with JUnit and Mockito, minimizing regression bugs.",
-        "Gained relevant foundational knowledge: Applied networking concepts (informed by Cisco CCNA certification) to backend system design and utilized Matlab for algorithm design and system simulations, strengthening analytical problem-solving skills.",
-      ],
-    },
-    {
+        {
       date: "August, 2025 - September, 2025",
       title: "Freelance Backend Developer (Spring Boot / Java)",
       description: [
-        "Developed and delivered a full-stack custom web shop solution for a local business, taking ownership of backend development using Spring Boot 3.x and Java 17.",
-        "Designed and implemented a secure REST API following a layered architecture (Controller-Service-Repository) with Spring Security for role-based access control (admin panel).",
-        "Managed data persistence using Hibernate/JPA with a PostgreSQL database.",
-        "Ensured code reliability and maintainability by writing unit and integration tests with JUnit 5 and Mockito.",
-        "Built a complementary frontend using React, focusing on user-friendly interfaces and clear data presentation.",
-        "Successfully delivered a stable, production-ready application by directly collaborating with the client to gather requirements and define the project scope.",
+        "Designed and delivered a production-ready backend for a custom e-commerce platform using Spring Boot 3 and Java 17.",
+        "Implemented secure REST APIs with Spring Security (role-based access, admin panel).",
+        "Modeled and managed persistence with Hibernate/JPA and PostgreSQL.",
+        "Ensured reliability through unit and integration testing with JUnit 5 and Mockito.",
+        "Collaborated directly with the client to define requirements, backend scope, and delivery milestones."
       ],
     },
+    {
+      date: "September, 2021 - Present",
+      title: "Backend Developer — Academic IoT Project (Spring Boot)",
+      description: [
+        "Developed backend services for an IoT-based smart feeder system as part of a team project.",
+        "Designed REST APIs using Spring Boot for device control and automated workflows.",
+        "Improved backend performance by ~35% using Redis caching to reduce database load.",
+        "Increased system stability by implementing unit and integration tests with JUnit and Mockito."
+      ],
+    }
   ];
 
   return (
-    <div
-      id="experience"
-      className="w-full"
-    >
+    <div id="experience" className="w-full">
       <h1 className="title-section">Experience</h1>
 
       <ol className="relative border-s border-default">
