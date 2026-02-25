@@ -6,6 +6,7 @@ import Projects from "./components/Projects.jsx";
 import Footer from "./components/Footer.jsx";
 import Experience from "./components/Experience.jsx";
 import Container from "./components/layout/Container.jsx";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useState } from "react";
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
           <Projects />
         </Container>
         <Footer />
+
+        {/* Production-only SpeedInsights */}
+        {process.env.NODE_ENV === "production" && <SpeedInsights />}
       </div>
     </>
   );
