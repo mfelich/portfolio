@@ -1,12 +1,34 @@
 import React from "react";
 import ProjectCard from "./ProjectCard.jsx";
-import summoneraiCoach from "../assets/summonerai-coach.png";
-import biddora1 from "../assets/biddora-1.png";
-import biddora2 from "../assets/biddora-2.png";
-import biddora3 from "../assets/biddora-3.png";
+import luxrosesMockup from "../assets/luxroses-mockup.png";
+import biddoraMockup from "../assets/biddora-mockup.png";
+import summoneraiCoachMockup from "../assets/summonerAiCoach-mockup.png";
+
+
 
 const Projects = () => {
   const projects = [
+    {
+      title: "Lux Roses",
+      description:
+        "Commercial-grade e-commerce platform delivered for a business client, designed with a secure session-based architecture and production deployment strategy. Engineered backend services with Spring Boot and Spring Security, implementing CSRF-protected administrative access and role-scoped resource management.",
+      technologies: [
+        "Java 17",
+        "Spring Boot",
+        "Spring Security (Session + CSRF)",
+        "PostgreSQL",
+        "Hibernate / JPA",
+        "Spring Mail",
+        "SMTP Integration",
+        "React",
+        "Railway",
+        "Vercel",
+      ],
+      images: [luxrosesMockup],
+      details:
+        "Architected and implemented a full order lifecycle system including cart workflow, administrative order management, secure image upload handling with persistent storage, and automated transactional email notifications using SMTP integration for order confirmations and administrative alerts. Designed using layered architecture (Controller-Service-Repository) with DTO validation and production-grade configuration management via Railway environment variables. Successfully deployed backend infrastructure (PostgreSQL + persistent volumes) to Railway and frontend to Vercel, delivering a live system actively used by the clients.",
+      githubUrl: "https://rose-client.vercel.app/",
+    },
     {
       title: "Biddora",
       description:
@@ -21,7 +43,7 @@ const Projects = () => {
         "Docker",
         "SpringDoc OpenAPI",
       ],
-      images: [biddora1, biddora2, biddora3],
+      images: [biddoraMockup],
       details:
         "Handles bid validation and automated auction winner determination, with performance optimized through Redis caching to reduce database load on frequently accessed product data. The application is fully containerized with Docker and documented using SpringDoc OpenAPI.",
       githubUrl: "https://github.com/mfelich/biddora-backend",
@@ -31,7 +53,7 @@ const Projects = () => {
       description:
         "Backend-driven analytics platform integrating third-party APIs and AI services to generate contextual performance insights.",
       technologies: ["Spring Boot", "Riot API", "OpenAI API", "React"],
-      images: [summoneraiCoach],
+      images: [summoneraiCoachMockup],
       details:
         "Implemented backend services to fetch and process external data from Riot API, transform match statistics, and generate AI-driven analysis using OpenAI APIs. Designed the system to handle external API limitations, data processing, and structured response delivery to a React frontend.",
       githubUrl: "https://github.com/mfelich/summonerai-coach",
