@@ -21,7 +21,7 @@ const ProjectCard = ({ project }) => {
                     <img
                         src={project.images[currentIndex]}
                         alt={`${project.title} - slide ${currentIndex + 1}`}
-                        className="w-full h-[220px] md:h-[220px] lg:h-[220px] rounded-lg object-fill"
+                        className="w-full rounded-lg object-fill"
                     />
 
                     {hasMultipleImages && (
