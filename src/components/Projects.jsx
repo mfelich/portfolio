@@ -4,8 +4,6 @@ import luxrosesMockup from "../assets/luxroses-mockup.png";
 import biddoraMockup from "../assets/biddora-mockup.png";
 import summoneraiCoachMockup from "../assets/summonerAiCoach-mockup.png";
 
-
-
 const Projects = () => {
   const projects = [
     {
@@ -27,7 +25,7 @@ const Projects = () => {
       images: [luxrosesMockup],
       details:
         "Architected and implemented a full order lifecycle system including cart workflow, administrative order management, secure image upload handling with persistent storage, and automated transactional email notifications using SMTP integration for order confirmations and administrative alerts. Designed using layered architecture (Controller-Service-Repository) with DTO validation and production-grade configuration management via Railway environment variables. Successfully deployed backend infrastructure (PostgreSQL + persistent volumes) to Railway and frontend to Vercel, delivering a live system actively used by the clients.",
-      githubUrl: "https://rose-client.vercel.app/",
+      projectUrl: "https://rose-client.vercel.app/",
     },
     {
       title: "Biddora",
@@ -46,7 +44,7 @@ const Projects = () => {
       images: [biddoraMockup],
       details:
         "Handles bid validation and automated auction winner determination, with performance optimized through Redis caching to reduce database load on frequently accessed product data. The application is fully containerized with Docker and documented using SpringDoc OpenAPI.",
-      githubUrl: "https://github.com/mfelich/biddora-backend",
+      projectUrl: "https://github.com/mfelich/biddora-backend",
     },
     {
       title: "SummonerAI Coach",
@@ -56,7 +54,7 @@ const Projects = () => {
       images: [summoneraiCoachMockup],
       details:
         "Implemented backend services to fetch and process external data from Riot API, transform match statistics, and generate AI-driven analysis using OpenAI APIs. Designed the system to handle external API limitations, data processing, and structured response delivery to a React frontend.",
-      githubUrl: "https://github.com/mfelich/summonerai-coach",
+      projectUrl: "https://github.com/mfelich/summonerai-coach",
     },
   ];
 
