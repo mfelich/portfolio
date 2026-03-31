@@ -2,7 +2,7 @@ import React from "react";
 import instagramLogo from "../assets/instagram.png";
 import githubLogo from "../assets/github.png";
 import linkedInLogo from "../assets/linkedin.png";
-import DotGrid from "../components/ui/DotGrid.jsx";
+import PrismaticBurst from "../components/ui/PrismaticBurst.jsx";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
@@ -33,16 +33,20 @@ const Hero = () => {
           boxShadow: "inset 0 0 50px rgba(0, 0, 0, 0.7)",
         }}
       >
-        <DotGrid
-          dotSize={6}
-          gap={15}
-          baseColor="#120D22"
-          activeColor="#7c3aed"
-          proximity={120}
-          shockRadius={250}
-          shockStrength={5}
-          resistance={750}
-          returnDuration={1.5}
+        <PrismaticBurst
+          animationType="rotate3d"
+          intensity={0.6}
+          speed={1}
+          distort={0.1}
+          paused={false}
+          offset={{ x: 0, y: 0 }}
+          hoverDampness={0.25}
+          rayCount={41}
+          mixBlendMode="lighten"
+          colors={["#F527EE", "#FFE25E", "#2F5CF5"]}
+          color0="#F527EE"
+          color1="#FFE25E"
+          color2="#2F5CF5"
         />
 
         <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-b from-transparent to-[#0F0F0F] pointer-events-none"></div>
@@ -50,9 +54,6 @@ const Hero = () => {
 
       <div className="w-full absolute top-0 left-0 mt-6 md:mt-8 lg:mt-16 px-4 h-[660px] flex items-center justify-center">
         <div>
-          <h1 className="text-gray-200 font-poppins text-center text-lg md:text-2xl lg:text-2xl font-semibold">
-            Hello I'm
-          </h1>
           <h1
             className="text-violet-600 font-poppins font-extrabold text-center text-[44px] md:text-[72px] lg:text-[82px]"
             style={{
@@ -62,7 +63,7 @@ const Hero = () => {
             Mirza Felić
           </h1>
           <h1 className="text-gray-200 text-sm font-poppins text-center md:text-lg lg:text-lg">
-             Backend Engineer  (Java/Spring)
+             Backend Engineer (Java/Spring)
           </h1>
 
           <div className="w-full flex items-center justify-center">
