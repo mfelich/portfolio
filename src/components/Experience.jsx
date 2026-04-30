@@ -2,7 +2,17 @@ import React from "react";
 
 const Experience = () => {
   const experiences = [
-        {
+    {
+      date: "March, 2026 - Present",
+      title: "AI Code Evaluation Engineer — Code Human Preference (Claude-HFI)",
+      description: [
+        "Worked on a client project focused on evaluating and improving AI-generated software solutions by testing Claude-HFI across real development codebases.",
+        "Designed complex engineering prompts and follow-up tasks to assess model performance in backend development, architecture decisions, debugging, and production-level code quality.",
+        "Compared multiple AI-generated implementation trajectories for the same engineering problem, performing deep technical analysis of code quality, maintainability, scalability, and best-practice alignment.",
+        "Wrote detailed professional evaluations including pros/cons analysis, architectural trade-offs, and final decision reports determining the stronger implementation path.",
+      ],
+    },
+    {
       date: "August, 2025 - September, 2025",
       title: "Freelance Backend Developer (Spring Boot / Java)",
       description: [
@@ -10,19 +20,19 @@ const Experience = () => {
         "Implemented secure REST APIs with Spring Security (role-based access, admin panel).",
         "Modeled and managed persistence with Hibernate/JPA and PostgreSQL.",
         "Ensured reliability through unit and integration testing with JUnit 5 and Mockito.",
-        "Collaborated directly with the client to define requirements, backend scope, and delivery milestones."
+        "Collaborated directly with the client to define requirements, backend scope, and delivery milestones.",
       ],
     },
     {
-      date: "September, 2021 - Present",
+      date: "September, 2022 - September, 2023",
       title: "Backend Developer — Academic IoT Project (Spring Boot)",
       description: [
         "Developed backend services for an IoT-based smart feeder system as part of a team project.",
         "Designed REST APIs using Spring Boot for device control and automated workflows.",
         "Improved backend performance by ~35% using Redis caching to reduce database load.",
-        "Increased system stability by implementing unit and integration tests with JUnit and Mockito."
+        "Increased system stability by implementing unit and integration tests with JUnit and Mockito.",
       ],
-    }
+    },
   ];
 
   return (
