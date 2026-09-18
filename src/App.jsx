@@ -24,8 +24,8 @@ function App() {
           />
         )}
 
-        <Hero />
         <Container>
+          <Hero />
           <AboutMe />
           <Experience />
           <Projects />
