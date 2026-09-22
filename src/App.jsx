@@ -1,41 +1,51 @@
 import "./App.css";
+import { useState, Suspense, lazy } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
-import AboutMe from "./components/AboutMe.jsx";
-import Projects from "./components/Projects.jsx";
 import Footer from "./components/Footer.jsx";
-import Experience from "./components/Experience.jsx";
 import Container from "./components/layout/Container.jsx";
-import { SpeedInsights } from "@vercel/speed-insights/react";
-import { useState } from "react";
+import LazySection from "./components/layout/LazySection.jsx";
+
+const AboutMe = lazy(() => import("./components/AboutMe.jsx"));
+const Experience = lazy(() => import("./components/Experience.jsx"));
+const Projects = lazy(() => import("./components/Projects.jsx"));
 
 function App() {
   const [isMobileNav, setMobileNav] = useState(false);
 
   return (
-    <>
-      <div className="background-primary">
-        <Navbar isMobileNav={isMobileNav} setMobileNav={setMobileNav} />
+    <div className="background-primary">
+      <Navbar isMobileNav={isMobileNav} setMobileNav={setMobileNav} />
 
-        {isMobileNav && (
-          <div
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 mt-[70px]"
-            onClick={() => setMobileNav(false)}
-          />
-        )}
+      {isMobileNav && (
+        <div
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 mt-[70px]"
+          onClick={() => setMobileNav(false)}
+        />
+      )}
 
-        <Container>
-          <Hero />
+      <Container>
+        <Hero />
+
+        <LazySection>
           <AboutMe />
-          <Experience />
-          <Projects />
-        </Container>
-        <Footer />
+        </LazySection>
 
-        {/* Production-only SpeedInsights */}
-        {process.env.NODE_ENV === "production" && <SpeedInsights />}
-      </div>
-    </>
+        <LazySection>
+          <Experience />
+        </LazySection>
+
+        <LazySection>
+          <Projects />
+        </LazySection>
+      </Container>
+
+      <Footer />
+
+      {process.env.NODE_ENV === "production" && <SpeedInsights />}
+    </div>
   );
 }
 
