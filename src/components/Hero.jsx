@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 
-const TECH = ["Java", "Spring Boot", "PostgreSQL", "Docker", "REST APIs"];
+const TECH = ["Java", "Spring Boot", "React", "PostgreSQL", "Docker"];
 
 const SOCIALS = [
   {
@@ -67,9 +67,9 @@ const Hero = () => {
         </p>
 
         <p className="mt-6 max-w-[52ch] font-poppins text-sm md:text-base leading-relaxed text-gray-400 lg:border-l lg:border-violet-600/40 lg:pl-5">
-          I can work across the stack, but given the choice I'll always pick the
-          backend — Java and Spring Boot specifically. That's where the
-          interesting problems are, for me.
+          Full-stack developer with 3+ years building web applications and
+          backend systems. React on the frontend; Java and Spring Boot on the
+          backend.
         </p>
 
         <ul className="mt-7 w-full flex items-center justify-center lg:justify-start gap-2 flex-wrap">
