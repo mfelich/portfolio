@@ -5,20 +5,25 @@ const MobileNav = ({ setMobileNav }) => {
   const handleScrollTo = (e) => {
     e.preventDefault();
     const hash = e.currentTarget.getAttribute("href");
-    const target = hash ? document.querySelector(hash) : null;
+    const target =
+      hash === "#home" ? null : hash ? document.querySelector(hash) : null;
 
-    if (target) {
+    setMobileNav(false);
+    if (hash !== "#home" && !target) return;
+
+    window.requestAnimationFrame(() => {
       const prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
 
       window.scrollTo({
-        top: target.getBoundingClientRect().top + window.scrollY - 100,
+        top:
+          hash === "#home"
+            ? 0
+            : target.getBoundingClientRect().top + window.scrollY - 80,
         behavior: prefersReducedMotion ? "auto" : "smooth",
       });
-    }
-
-    setMobileNav(false);
+    });
   };
 
 

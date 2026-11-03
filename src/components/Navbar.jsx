@@ -9,16 +9,19 @@ const Navbar = ({ isMobileNav, setMobileNav }) => {
   const handleScrollTo = (e) => {
     e.preventDefault();
     const hash = e.currentTarget.getAttribute("href");
-    const target = hash ? document.querySelector(hash) : null;
+    const target = hash === "#home" ? null : hash ? document.querySelector(hash) : null;
 
-    if (!target) return;
+    if (hash !== "#home" && !target) return;
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
     window.scrollTo({
-      top: target.getBoundingClientRect().top + window.scrollY - 160,
+      top:
+        hash === "#home"
+          ? 0
+          : target.getBoundingClientRect().top + window.scrollY - 160,
       behavior: prefersReducedMotion ? "auto" : "smooth",
     });
   };

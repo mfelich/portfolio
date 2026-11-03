@@ -10,7 +10,7 @@ const Footer = () => {
             Portfolio Created By Mirza Felić
           </p>
           <p className="font-poppins text-center text-sm text-gray-700">
-            © 2025 All rights reserved
+            © 2026 All rights reserved
           </p>
         </div>
       </div>
