@@ -1,4 +1,8 @@
 import React, { useId, useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ProjectCard = ({ project }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -8,6 +12,59 @@ const ProjectCard = ({ project }) => {
   const tagRowRef = useRef(null);
   const measuredTagsRef = useRef(null);
   const viewMoreRef = useRef(null);
+  const cardRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const card = cardRef.current;
+    if (!card) return undefined;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReducedMotion) return undefined;
+
+    const context = gsap.context(() => {
+      gsap.utils
+        .toArray("[data-project-image], [data-project-reveal]", card)
+        .forEach((element) => {
+          gsap.from(element, {
+            y: 12,
+            autoAlpha: 0,
+            duration: 0.45,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: element,
+              start: "top 88%",
+              once: true,
+            },
+          });
+        });
+    }, card);
+
+    return () => context.revert();
+  }, []);
+
+  useLayoutEffect(() => {
+    const card = cardRef.current;
+    if (!card || !isExpanded) return undefined;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReducedMotion) return undefined;
+
+    const context = gsap.context(() => {
+      gsap.from("[data-project-details-reveal]", {
+        y: 12,
+        autoAlpha: 0,
+        duration: 0.45,
+        stagger: 0.1,
+        ease: "power2.out",
+      });
+    }, card);
+
+    return () => context.revert();
+  }, [isExpanded]);
 
   useLayoutEffect(() => {
     if (isExpanded) return undefined;
@@ -70,8 +127,12 @@ const ProjectCard = ({ project }) => {
 
   return (
     <>
-      <div className="md:flex mb-8 md:mb-8 lg:mb-4 md:items-start md:justify-start lg:flex lg:items-start lg:justify-start md:space-x-4 lg:space-x-4">
-        <div className="mb-2 rounded-lg w-full md:w-1/2 lg:w-1/3 relative overflow-hidden">
+      <div
+        ref={cardRef}
+        data-project-card
+        className="md:flex mb-8 md:mb-8 lg:mb-4 md:items-start md:justify-start lg:flex lg:items-start lg:justify-start md:space-x-4 lg:space-x-4"
+      >
+        <div data-project-image className="mb-2 rounded-lg w-full md:w-1/2 lg:w-1/3 relative overflow-hidden">
           <a
             href={project?.projectUrl}
             target="_blank"
@@ -118,25 +179,27 @@ const ProjectCard = ({ project }) => {
           )}
         </div>
 
-        <div className="w-full md:w-1/2 lg:w-2/3">
+        <div data-project-content className="w-full md:w-1/2 lg:w-2/3">
           <a
             href={project?.projectUrl}
             target="_blank"
             className="font-poppins text-white text-lg md:text-xl lg:text-xl sm:mt-0 lg:mt-0 text-left font-semibold hover:text-violet-600 cursor-pointer transition-colors duration-200"
+            data-project-reveal
           >
             {project?.title}
           </a>
-          <p className="font-poppins text-gray-500 text-sm md:text-md lg:text-md mt-2 sm:mt-0 lg:mt-2 text-left">
+          <p data-project-reveal className="font-poppins text-gray-500 text-sm md:text-md lg:text-md mt-2 sm:mt-0 lg:mt-2 text-left">
             {project?.description}
           </p>
 
-          <p className="font-poppins text-gray-400 text-xs mt-2 text-left">
+          <p data-project-reveal className="font-poppins text-gray-400 text-xs mt-2 text-left">
             <span className="text-gray-300">Stack:</span>{" "}
             {project.techStack.join(" · ")}
           </p>
 
           <div
             ref={tagRowRef}
+            data-project-reveal
             className={`projects-tag-row relative mt-2 flex items-center gap-2 ${
               isExpanded ? "flex-wrap" : "flex-nowrap overflow-hidden"
             }`}
@@ -209,7 +272,7 @@ const ProjectCard = ({ project }) => {
             aria-hidden={!isExpanded}
           >
             <div className="projects-details-content">
-              <p className="font-poppins text-gray-500 text-sm md:text-md lg:text-md mt-2 md:mt-2 sm:mt-0 lg:mt-2 text-left">
+              <p data-project-details-reveal className="font-poppins text-gray-500 text-sm md:text-md lg:text-md mt-2 md:mt-2 sm:mt-0 lg:mt-2 text-left">
                 {project?.details}
               </p>
               <div className="mt-3 flex justify-end">

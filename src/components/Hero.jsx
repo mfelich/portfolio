@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import profilePic from "../assets/profile-pic1.png";
 import ElectricBorder from "./ui/ElectricBorder";
-import StrokeText from "./ui/StrokeText";
 import gsap from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-gsap.registerPlugin(ScrollToPlugin);
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText);
 
 const TECH = ["Java", "Spring Boot", "React", "PostgreSQL", "Docker"];
 
@@ -27,6 +27,57 @@ const SOCIALS = [
 ];
 
 const Hero = () => {
+  const contentRef = useRef(null);
+  const titleRef = useRef(null);
+  const accentLineRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const content = contentRef.current;
+    const title = titleRef.current;
+    if (!content || !title) return undefined;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReducedMotion) return undefined;
+
+    let split;
+    const context = gsap.context(() => {
+      split = SplitText.create(title, { type: "chars" });
+
+      const timeline = gsap.timeline();
+      timeline.from(split.chars, {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.65,
+        stagger: 0.035,
+        ease: "power3.out",
+      });
+      timeline.from(
+        content.querySelectorAll("[data-hero-reveal]"),
+        {
+          y: 14,
+          autoAlpha: 0,
+          duration: 0.5,
+          stagger: 0.12,
+          ease: "power2.out",
+        },
+        "-=0.3",
+      );
+      timeline.fromTo(
+        accentLineRef.current,
+        { scaleY: 0 },
+        { scaleY: 1, duration: 0.45, ease: "power1.out" },
+        ">",
+      );
+    }, content);
+
+    return () => {
+      context.revert();
+      split?.revert();
+    };
+  }, []);
+
   const handleScrollTo = (e, hash) => {
     e.preventDefault();
 
@@ -37,42 +88,56 @@ const Hero = () => {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    gsap.to(window, {
-      duration: prefersReducedMotion ? 0 : 1,
-      scrollTo: { y: hash, offsetY: 160 },
-      ease: "power2.inOut",
+    window.scrollTo({
+      top: target.getBoundingClientRect().top + window.scrollY - 160,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
     });
   };
 
   return (
     <div className="w-full mt-6 md:mt-8 lg:mt-16 flex flex-col lg:flex-row lg:items-center lg:justify-center gap-12 lg:gap-8">
-      <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-start">
-        <StrokeText
-          text="Mirza Felić"
-          strokeColor="#7C3AED"
-          fillColor="#FFFFFF"
-          strokeWidth={1.6}
-          drawDuration={1.6}
-          fillDelay={0.2}
-          stagger={0.05}
-          ease="power2.out"
-          trigger="mount"
-          fillMode="wipe"
-          reverse={false}
-          className="font-poppins text-center lg:text-start text-[52px] md:text-[72px] lg:text-[136px] tracking-[-1px] md:tracking-[-2.5px] lg:tracking-[-3.5px] font-extrabold"
-        />
+      <div
+        ref={contentRef}
+        className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-start"
+      >
+        <h1
+          ref={titleRef}
+          className="font-poppins text-center lg:text-start text-[52px] md:text-[72px] lg:text-[110px] tracking-[-1px] md:tracking-[-2.5px] lg:tracking-[-3.5px] font-extrabold text-white"
+        >
+          Mirza Felić
+        </h1>
 
-        <p className="mt-2 font-poppins text-sm md:text-lg lg:text-lg text-gray-400">
+        <p
+          data-hero-reveal
+          className="mt-2 font-poppins text-sm md:text-lg lg:text-lg text-gray-400"
+        >
           Backend Engineer (Java/Spring)
         </p>
 
-        <p className="mt-6 max-w-[52ch] font-poppins text-sm md:text-base leading-relaxed text-gray-400 lg:border-l lg:border-violet-600/40 lg:pl-5">
-          Full-stack developer with 3+ years building web applications and
-          backend systems. React on the frontend; Java and Spring Boot on the
-          backend.
-        </p>
+        <div
+          data-hero-reveal
+          className="relative mt-6 max-w-[52ch] lg:pl-5"
+        >
+          <span
+            aria-hidden="true"
+            className="absolute left-0 top-0 hidden h-full w-px bg-violet-600/40 lg:block"
+          >
+            <span
+              ref={accentLineRef}
+              className="block h-full w-full origin-top bg-violet-600"
+            />
+          </span>
+          <p className="font-poppins text-sm md:text-base leading-relaxed text-gray-400">
+            Full-stack developer with 3+ years building web applications and
+            backend systems. React on the frontend; Java and Spring Boot on the
+            backend.
+          </p>
+        </div>
 
-        <ul className="mt-7 w-full flex items-center justify-center lg:justify-start gap-2 flex-wrap">
+        <ul
+          data-hero-reveal
+          className="mt-7 w-full flex items-center justify-center lg:justify-start gap-2 flex-wrap"
+        >
           {TECH.map((tech) => (
             <li key={tech} className="px-2 py-2 bg-gray-800 w-fit rounded-md">
               <span className="text-violet-600 text-sm font-poppins">
@@ -82,7 +147,10 @@ const Hero = () => {
           ))}
         </ul>
 
-        <div className="mt-8 w-full flex items-center justify-center lg:justify-start gap-4 flex-wrap">
+        <div
+          data-hero-reveal
+          className="mt-8 w-full flex items-center justify-center lg:justify-start gap-4 flex-wrap"
+        >
           <a
             href="#projects"
             onClick={(e) => handleScrollTo(e, "#projects")}
@@ -107,7 +175,10 @@ const Hero = () => {
           </a>
         </div>
 
-        <div className="mt-8 w-full flex items-center justify-center lg:justify-start gap-3">
+        <div
+          data-hero-reveal
+          className="mt-8 w-full flex items-center justify-center lg:justify-start gap-3"
+        >
           {SOCIALS.map(({ label, href, path }) => (
             <a
               key={label}

@@ -1,19 +1,22 @@
 import React from "react";
-import gsap from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-gsap.registerPlugin(ScrollToPlugin);
 
-const MobileNav = ({ isMobileNav,setMobileNav }) => {
+const MobileNav = ({ setMobileNav }) => {
 
   const handleScrollTo = (e) => {
     e.preventDefault();
     const hash = e.currentTarget.getAttribute("href");
+    const target = hash ? document.querySelector(hash) : null;
 
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: { y: hash, offsetY: 100 },
-      ease: "power1.inOut",
-    });
+    if (target) {
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - 100,
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+      });
+    }
 
     setMobileNav(false);
   };

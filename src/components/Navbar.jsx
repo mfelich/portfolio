@@ -3,20 +3,23 @@ import menus from "../assets/menus.png";
 import devIcon from "../assets/code.png";
 import closeMenu from "../assets/close2.png";
 import MobileNav from "./MobileNav.jsx";
-import gsap from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-gsap.registerPlugin(ScrollToPlugin);
 
 const Navbar = ({ isMobileNav, setMobileNav }) => {
   
   const handleScrollTo = (e) => {
     e.preventDefault();
     const hash = e.currentTarget.getAttribute("href");
+    const target = hash ? document.querySelector(hash) : null;
 
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: { y: hash, offsetY: 160 },
-      ease: "power1.inOut",
+    if (!target) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    window.scrollTo({
+      top: target.getBoundingClientRect().top + window.scrollY - 160,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
     });
   };
 

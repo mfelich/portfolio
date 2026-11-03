@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import ProjectCard from "./ProjectCard.jsx";
 import luxrosesMockup from "../assets/luxroses-mockup.png";
 import biddoraMockup from "../assets/biddora-mockup.png";
 import summoneraiCoachMockup from "../assets/summonerAiCoach-mockup.png";
 import arcwellStudioMockup from "../assets/arcwell-mockup.png";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
+  const sectionRef = useRef(null);
+
   const projects = [
     {
       title: "Biddora",
@@ -115,9 +121,38 @@ const Projects = () => {
     },
   ];
 
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return undefined;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReducedMotion) return undefined;
+
+    const context = gsap.context(() => {
+      gsap.from("[data-projects-title]", {
+        y: 14,
+        autoAlpha: 0,
+        duration: 0.45,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 78%",
+          once: true,
+        },
+      });
+
+    }, section);
+
+    return () => context.revert();
+  }, []);
+
   return (
-    <div id="projects" className="projects-section w-full">
-      <h1 className="title-section">Projects</h1>
+    <div ref={sectionRef} id="projects" className="projects-section w-full">
+      <h1 data-projects-title className="title-section">
+        Projects
+      </h1>
 
       {projects.map((project, index) => (
         <ProjectCard key={index} project={project} />
